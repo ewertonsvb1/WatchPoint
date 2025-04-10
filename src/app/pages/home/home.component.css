@@ -1,0 +1,77 @@
+body {
+    background-color: #141414;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ff4747;
+  }
+  
+  .input-group input {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #333;
+  }
+  
+  .input-group .btn-primary {
+    background-color: #ff4747;
+    border-color: #ff4747;
+  }
+  
+  .input-group .btn-primary:hover {
+    background-color: #ff2c2c;
+    border-color: #ff2c2c;
+  }
+  
+  .card {
+    background-color: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 71, 71, 0.4);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff4747;
+  }
+  
+  .card-text textarea {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+    resize: vertical;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .card-body p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .rating{
+    color: white;
+  }

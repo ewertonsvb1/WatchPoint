@@ -1,0 +1,50 @@
+<div class="container mt-5" *ngIf="filme">
+    <h2 class="mb-4 text-center">{{ filme.Title }} <small class="text-muted">({{ filme.Year }})</small></h2>
+  
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <img
+          [src]="filme.Poster !== 'N/A' ? filme.Poster : 'https://via.placeholder.com/300x450?text=Sem+Imagem'"
+          class="img-fluid rounded shadow"
+          alt="{{ filme.Title }}"
+        />
+      </div>
+  
+      <div class="col-md-8">
+        <ul class="list-group list-group-flush bg-dark rounded shadow p-3">
+          <li class="list-group-item bg-dark text-white"><strong>🎬 Diretor:</strong> {{ filme.Director }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>🎬 Data de Lançamento:</strong> {{ filme.Released}}</li>
+          <li class="list-group-item bg-dark text-white"><strong>🎞️ Gênero:</strong> {{ filme.Genre }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>⏱️ Duração:</strong> {{ filme.Runtime }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>📝 Sinopse:</strong> {{ filme.Plot }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>🎭 Atores:</strong> {{ filme.Actors }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>🌍 Idioma:</strong> {{ filme.Language }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>🌍 Premiação:</strong> {{ filme.Awards	 }}</li>
+          <li class="list-group-item bg-dark text-white"><strong>⭐ Nota IMDb:</strong> {{ filme.imdbRating }}</li>
+        </ul>
+  
+        <div class="mt-4 text-end">
+          <a [routerLink]="['/']"
+          [queryParams]="{ titulo: tituloAnterior }" class="btn btn-dark">⬅️ Voltar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Filmes Relacionados -->
+  <div class="container mt-5" *ngIf="filmesRelacionados?.length">
+    <h4 class="mb-4 ">🎥 Filmes Relacionados</h4>
+  
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let filme of filmesRelacionados">
+        <div class="card bg-dark text-white h-100 shadow-sm">
+          <img [src]="filme.Poster !== 'N/A' ? filme.Poster : 'https://via.placeholder.com/300x450'" class="card-img-top" alt="{{ filme.Title }}">
+          <div class="card-body d-flex flex-column">
+            <h6 class="card-title">{{ filme.Title }}</h6>
+            <a [routerLink]="['/detalhes', filme.imdbID]" class="btn btn-outline-light btn-sm mt-auto">Ver Detalhes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

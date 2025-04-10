@@ -1,0 +1,85 @@
+<div class="container mt-5">
+    <h2 class="text-center">🎬 Catálogo de Filmes e Séries</h2>
+  
+    <div class="input-group mb-5">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por título"
+        [(ngModel)]="titulo"
+        (keyup.enter)="buscar()"
+      />
+      <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-3 mb-4" *ngFor="let filme of resultados">
+        <div class="card h-100">
+          <img
+            [src]="filme.Poster !== 'N/A' ? filme.Poster : 'https://via.placeholder.com/300x450?text=Sem+Imagem'"
+            class="card-img-top"
+            alt="{{ filme.Title }}"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ filme.Title }}</h5>
+            <p><strong>Ano:</strong> {{ filme.Year }}</p>
+            <p><strong>Gênero:</strong> {{ filme.Genre }}</p>
+            <p><strong>Duração:</strong> {{ filme.Runtime }}</p>
+            <p><strong>Idioma:</strong> {{ filme.Language }}</p>
+            <div class="rating mt-2">
+              <div class="d-flex align-items-center gap-2">
+                <span class="fw-bold">Meu voto:</span>
+                <ng-container *ngFor="let estrela of [1,2,3,4,5]">
+                  <i 
+                    class="fa-star text-center" 
+                    [ngClass]="{
+                      'fas text-warning': estrela <= (votos[filme.imdbID] || 0), 
+                      'far text-btn-outline-warning': estrela > (votos[filme.imdbID] || 0)
+                    }"
+                    (click)="votar(filme.imdbID, estrela)"
+                    style="cursor: pointer; font-size: 1.2rem;"
+                  ></i>
+                </ng-container>
+              </div>
+            
+              <div class="mt-1 small text-muted" *ngIf="votos[filme.imdbID]">
+                Você votou: {{ votos[filme.imdbID] }} estrela{{ votos[filme.imdbID] > 1 ? 's' : '' }}
+              </div>
+            </div>
+            
+            <ng-container *ngIf="isFavorito(filme.imdbID); else adicionar">
+              <button 
+                class="btn btn-outline-danger btn-sm"
+                (click)="toggleFavorito(filme)">
+                <i class="fas fa-times"></i> Remover Favorito
+              </button>
+            </ng-container>
+            <ng-template #adicionar>
+              <button 
+                class="btn btn-outline-warning btn-sm"
+                (click)="toggleFavorito(filme)">
+                <i class="fas fa-star"></i> Adicionar aos Favoritos
+              </button>
+            </ng-template>
+            
+            <textarea
+              [(ngModel)]="anotacoes[filme.imdbID]"
+              class="form-control mt-2 flex-grow-1"
+              placeholder="Ex: Assisti até o episódio 6"
+              rows="3"
+            ></textarea>
+  
+            <button class="btn btn-success mt-3" (click)="salvarAnotacao(filme.imdbID)">
+              💾 Salvar Anotação
+            </button>
+  
+            <a [routerLink]="['/detalhes', filme.imdbID]"
+            [queryParams]="{ titulo: titulo }" class="btn btn-info mt-2">
+              📖 Mais Detalhes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

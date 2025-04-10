@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h2 class="text-center">⭐ Meus Favoritos</h2>
+  
+    <div class="row mt-4">
+      <div class="col-md-3 mb-4" *ngFor="let filme of favoritos">
+        <div class="card h-100">
+          <img
+            [src]="filme.Poster !== 'N/A' ? filme.Poster : 'https://via.placeholder.com/300x450?text=Sem+Imagem'"
+            class="card-img-top"
+            alt="{{ filme.Title }}"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ filme.Title }}</h5>
+            <p><strong>Ano:</strong> {{ filme.Year }}</p>
+            <p><strong>Gênero:</strong> {{ filme.Genre }}</p>
+            <p><strong>Duração:</strong> {{ filme.Runtime }}</p>
+  
+            <button
+              class="btn btn-outline-danger mt-auto"
+              (click)="remover(filme.imdbID)">
+              ❌ Remover dos Favoritos
+            </button>
+  
+            <a [routerLink]="['/detalhes', filme.imdbID]"
+               class="btn btn-info mt-2">
+              📖 Ver Detalhes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="favoritos.length === 0" class="text-center mt-5">
+      <p>Você ainda não adicionou nenhum favorito. 🧐</p>
+      <a routerLink="/" class="btn btn-primary">🔍 Explorar Filmes</a>
+    </div>
+  </div>
+  

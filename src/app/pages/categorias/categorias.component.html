@@ -1,0 +1,37 @@
+<!-- Filtro de Gêneros -->
+<div class="input-group mb-4">
+    <label class="input-group-text" for="generoSelect">Gênero</label>
+    <select
+      class="form-select"
+      id="generoSelect"
+      [(ngModel)]="generoSelecionado"
+    >
+      <option value="">-- Selecione um Gênero --</option>
+      <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+    </select>
+  </div>
+  
+  <!-- Lista de Filmes -->
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4" *ngFor="let filme of filtrarPorGenero()">
+      <a
+        *ngIf="filme.imdbID && filme.imdbID !== 'N/A'"
+        [routerLink]="['/detalhes', filme.imdbID]"
+        class="text-decoration-none text-dark"
+      >
+        <div class="card h-100 shadow-sm border-0 hover-shadow rounded">
+          <img
+            [src]="filme.Poster !== 'N/A' ? filme.Poster : 'assets/no-poster.jpg'"
+            class="card-img-top rounded-top"
+            alt="Poster do filme"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ filme.Title }}</h5>
+            <p><strong>Gênero:</strong> {{ filme.Genre }}</p>
+            <p><strong>Ano:</strong> {{ filme.Year }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  
