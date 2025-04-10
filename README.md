@@ -1,27 +1,90 @@
-# Watchpoint
+# Watchpoint 🎥
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+**Watchpoint** é uma aplicação web desenvolvida com **Angular** que permite aos usuários explorar, favoritar e visualizar detalhes de filmes e séries.  
+A aplicação utiliza a API **OMDb** para buscar informações sobre títulos, oferecendo uma interface moderna e responsiva.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✨ Funcionalidades
 
-## Code scaffolding
+- 🎬 **Catálogo de Filmes e Séries**: Pesquise por títulos e veja detalhes como gênero, duração, idioma, sinopse e mais.
+- ⭐ **Favoritos**: Adicione títulos à sua lista de favoritos e gerencie com facilidade.
+- 📝 **Anotações**: Registre observações personalizadas sobre filmes e séries.
+- 🌟 **Votação**: Avalie com estrelas os títulos assistidos.
+- 🔗 **Filmes Relacionados**: Descubra filmes similares ao que está visualizando.
+- 🎭 **Filtro por Gênero**: Explore categorias para encontrar filmes por gênero.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🛠️ Tecnologias Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular** – Framework principal da aplicação.
+- **Bootstrap** – Layout responsivo e moderno.
+- **FontAwesome** – Ícones na interface.
+- **SweetAlert2** – Alertas e notificações interativas.
+- **OMDb API** – Fonte de dados de filmes e séries.
+- **LocalStorage** – Persistência de dados como favoritos e anotações.
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📁 Estrutura do Projeto
 
-## Running end-to-end tests
+```plaintext
+src/
+├── app/
+│   ├── app.component.ts          # Componente principal
+│   ├── app.routes.ts             # Configuração de rotas
+│   ├── pages/
+│   │   ├── home/                 # Página de busca
+│   │   ├── favoritos/            # Página de favoritos
+│   │   ├── categorias/           # Filtro por gênero
+│   │   ├── detalhes/             # Detalhes de filmes
+│   ├── services/
+│   │   ├── omdb.service.ts       # Integração com a API OMDb
+│   ├── model/
+│   │   ├── filme.model.ts        # Modelo de dados de filme
+├── environments/
+│   ├── environment.ts            # Config. ambiente dev
+│   ├── environment.prod.ts       # Config. ambiente prod
+├── styles.css                    # Estilos globais
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+````
+## 🖥️ Como Rodar o Projeto:
 
-## Further help
+✔️ Pré-requisitos
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    Node.js (v16 ou superior)
+
+    Angular CLI (v18.2.8 ou superior)
+
+## 📦 Instalação
+
+git clone https://github.com/ewertonsvb1/watchpoint.git
+
+cd watchpoint
+
+npm install
+
+## 🔐 Configurar a API Key do OMDb
+    Copie o arquivo de exemplo:
+  
+    cp src/environments/environment.example.ts src/environments/environment.ts
+    cp src/environments/environment.example.ts src/environments/environment.prod.ts
+
+  Substitua SUA_API_KEY_AQUI pela sua chave da OMDb API.
+
+## ▶️ Rodar em Desenvolvimento
+
+ng serve
+
+Acesse em: http://localhost:4200
+
+
+## 🤝 Contribuição
+
+Contribuições são super bem-vindas!
+Sinta-se à vontade para abrir issues ou enviar pull requests. 😄
+
+## ✍️ Autor
+
+Desenvolvido por Ewerton Silva.
